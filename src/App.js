@@ -113,7 +113,7 @@ class App extends Component {
             />
 
             <ButtonGroup
-              style={{ marginTop: "auto", padding: "1em 0" }}
+              style={{ margin: "auto", padding: "1em 0" }}
               color="primary"
               size="medium"
             >
