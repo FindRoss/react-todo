@@ -14,18 +14,7 @@ import Grid from '@material-ui/core/Grid';
 
 class App extends Component {
   state = {
-    todos: [
-      {
-        title: "this is my first todo",
-        id: uuid(),
-        completed: false
-      },
-      {
-        title: "second todo",
-        id: uuid(),
-        completed: false
-      },
-    ],
+    todos: [],
     input: '',
     error: false,
     filter: 'all',
