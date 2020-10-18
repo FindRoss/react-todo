@@ -34,7 +34,7 @@ class App extends Component {
     const addTodo = (e) => {
       e.preventDefault();
       const newTitle = this.state.input;
-      if (newTitle == '') {
+      if (newTitle === '') {
         this.setState({ error: true })
       } else {
         const newTodo = {
@@ -83,7 +83,7 @@ class App extends Component {
               {
                 this.state.error ?
                   <FormHelperText id="component-helper-text" style={{ color: 'red' }}>Please enter a todo</FormHelperText> :
-                  <div style={{ height: "20px" }}></div>
+                  <div></div>
               }
               <Button
                 style={{ marginTop: '0.6em' }}
