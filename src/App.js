@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import uuid from 'uuid';
 
@@ -13,17 +13,14 @@ import Grid from '@material-ui/core/Grid';
 
 
 function App() {
-  // state = {
-  //   todos: [],
-  //   input: '',
-  //   error: false,
-  //   filter: 'all',
-  // }
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || []);
   const [input, setInput] = useState('');
   const [error, setError] = useState(false);
   const [filter, setFilter] = useState('all');
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const handleChange = (e) => {
     e.preventDefault();
