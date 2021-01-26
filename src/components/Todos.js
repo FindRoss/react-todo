@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 
-const Todos = ({ todos, filter, handleComplete, handleDelete }) => {
+function Todos({ todos, filter, handleComplete, handleDelete }) {
 
 
   let view = todos;
