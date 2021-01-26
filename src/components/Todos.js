@@ -5,8 +5,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
 
-const Todos = ({ todos, filter, handleComplete }) => {
+const Todos = ({ todos, filter, handleComplete, handleDelete }) => {
 
 
   let view = todos;
@@ -28,12 +29,14 @@ const Todos = ({ todos, filter, handleComplete }) => {
           view.map(
             todo =>
               <ListItem
-                onClick={() => handleComplete(todo.id)}
-                key={todo.id}
-                style={{ cursor: 'pointer' }}
-              >
-                <Icon color="disabled" >{todo.completed ? 'check_box_icon' : 'check_box_outline_blank_icon'}</Icon>
+                key={todo.id}>
+                <IconButton aria-label="done" onClick={() => handleComplete(todo.id)}>
+                  <Icon color="disabled" >{todo.completed ? 'check_box_icon' : 'check_box_outline_blank_icon'}</Icon>
+                </IconButton>
                 <ListItemText style={{ opacity: todo.completed ? '0.2' : '1', paddingLeft: "0.6em" }} primary={todo.title} />
+                <IconButton aria-label="delete" onClick={() => handleDelete(todo.id)}>
+                  <Icon>delete</Icon>
+                </IconButton>
               </ListItem>
           )
         }

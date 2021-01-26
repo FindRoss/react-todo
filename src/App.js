@@ -23,13 +23,18 @@ class App extends Component {
 
   render() {
 
-
     const handleChange = (e) => {
       e.preventDefault();
       const value = e.target.value;
       this.setState({ input: value });
     }
 
+    const handleDelete = (id) => {
+      const todosCopy = [...this.state.todos];
+      const filterTodos = todosCopy.filter(todo => todo.id !== id);
+
+      this.setState({ todos: filterTodos })
+    }
 
     const addTodo = (e) => {
       e.preventDefault();
@@ -45,7 +50,6 @@ class App extends Component {
         const newTodos = [...this.state.todos, newTodo];
         this.setState({ todos: newTodos, input: '', error: false });
       }
-
     }
 
     const handleComplete = (id) => {
@@ -59,9 +63,7 @@ class App extends Component {
       this.setState({ todos: updatedArr });
     }
 
-    const handleFilter = (filter) => {
-      this.setState({ filter: filter });
-    }
+    const handleFilter = (filter) => this.setState({ filter });
 
     return (
       <div className="App" style={{ backgroundColor: "#f7f7f7" }}>
@@ -94,35 +96,31 @@ class App extends Component {
                 Add
               </Button>
             </form>
-
             <Todos
               todos={this.state.todos}
               filter={this.state.filter}
               handleComplete={(id) => handleComplete(id)}
-            />
-
+              handleDelete={(id) => handleDelete(id)} />
             <ButtonGroup
               style={{ margin: "auto", padding: "1em 0" }}
               color="primary"
-              size="medium"
-            >
+              size="small">
               <Button
                 variant={this.state.filter === 'all' ? 'contained' : ''}
                 onClick={() => handleFilter('all')}>
-                All ({this.state.todos.length})
+                All <span className="button-num">{this.state.todos.length}</span>
               </Button>
               <Button
                 variant={this.state.filter === 'complete' ? 'contained' : ''}
                 onClick={() => handleFilter('complete')}>
-                Complete ({this.state.todos.filter(t => (t.completed === true)).length})
+                Complete <span className="button-num">{this.state.todos.filter(t => (t.completed === true)).length}</span>
               </Button>
               <Button
                 variant={this.state.filter === 'incomplete' ? 'contained' : ''}
                 onClick={() => handleFilter('incomplete')}>
-                Incomplete ({this.state.todos.filter(t => (t.completed !== true)).length})
+                Incomplete <span className="button-num">{this.state.todos.filter(t => (t.completed !== true)).length}</span>
               </Button>
             </ButtonGroup>
-
           </Grid>
         </Container>
       </div>
