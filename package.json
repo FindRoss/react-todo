@@ -2,10 +2,6 @@
   "name": "react-list",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "npm": "6.5.0",
-    "node": "11.8.0"
-  },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "immer": ">=8.0.1",
